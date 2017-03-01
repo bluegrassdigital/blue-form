@@ -1,0 +1,10 @@
+# OSX
+#
+.DS_Store
+
+# node.js
+#
+*.es6.js
+node_modules/
+npm-debug.log
+docs/

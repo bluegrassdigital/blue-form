@@ -1,35 +1,7 @@
-# blue-form
 
-<p>A class based form implementation for easily getting/setting form field values programmatically. Works seamlessly with <a href="https://github.com/bluegrassdigital/blue-widgets" target="_blank">blue-widgets</a> or standalone.</p>
+The values in this form should all be printed out to the div below, then 5 seconds later all the values will be changed programmatically
 
-Check out the [examples](https://bluegrassdigital.github.io/blue-form/#/page/docs/examples.md)
-
-## Installation
-
-This is a UMD module, so can be consumed any way you like
-
-Install via npm `npm install blue-form --save`
-
-Or include `blue-form.js` from the `./dist` folder in your page
-
-### CommonJS
 ```javascript
-var Form = require('blue-form').Form
-
-var form = new Form(el)
-
-console.log(form.getFieldValues())
-```
-
-### ES2015 module
-```javascript
-import { Form } from 'blue-form'
-
-const form = new Form(el)
-
-console.log(form.getFieldValues())
-
-// Set new values programmatically with a simple object of new name:value pairs. Multi selects and checkboxes accept arrays or strings
 form.setFieldValues({
   "TextInput":"New value!",
   "EmailInput":"newemail@example.com",
@@ -41,12 +13,13 @@ form.setFieldValues({
   "RadioInput":"No",
   "Checkboxes":["Apples"]
 })
-
 ```
 
-### Standalone
+<?codeembed seamless title="Result" size="ipad" base="docs/base.html" adjust-height use-html="form" scripts="../dist/blue-form.js,form.js"></codeembed?>
 
-```html
+<?tabs>
+<codeblock title="JS" lang="javascript" external="docs/form.js"></codeblock>
+<codeblock title="HTML" lang="html" ref="form">
 <form id="Form">
   <input type="text" name="TextInput" value="Some value"><br>
   <input type="number" name="NumberInput" value="5"><br>
@@ -80,28 +53,12 @@ form.setFieldValues({
     <label>Pears<input type="checkbox" name="Checkboxes" value="Pears" checked></label>
   </fieldset>
 </form>
-
-<script src="blue-form.js"></script>
-<script>
-var el = document.querySelector('#Form')
-
-var form = new blueForm.Form(el)
-
-console.log(form.getFieldValues())
-</script>
-```
-
-## Contributing to blue-form
-
-[Standard JS](http://standardjs.com/) applies
-
-camelCase for function and variable names
-
-Standard [Github Flow](https://guides.github.com/introduction/flow/) - branch, submit pull requests
-
-### Getting set up
-
-- Pull the repo
-- run `npm install` or `yarn install`
-- run `gulp` to transform/babelify the *.es6.js files
-- run `npm run build` to compile the dist version
+<p>Original field values</p>
+<pre id="originalValues">
+some text
+some text
+some text
+some text
+</pre>
+</codeblock>
+</tabs?>
