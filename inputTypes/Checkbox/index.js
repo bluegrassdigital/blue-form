@@ -40,10 +40,10 @@ var CheckboxInput = function () {
     value: function setValue(value, suppress) {
       value = Array.isArray(value) ? value : [value];
       _blueJs.dom.each(this.inputs, function (input) {
-        if (value.indexOf(input.value) !== -1) {
-          input.checked = 'checked';
+        if (input.value === value) {
+          input.checked = true;
         } else {
-          input.removeAttribute('checked');
+          input.checked = false;
         }
       });
       if (!suppress) _blueJs.events.trigger(this.inputs[0], 'change');

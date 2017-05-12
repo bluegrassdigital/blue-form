@@ -13,7 +13,7 @@ class Select {
     this.select = els[0]
     this.options = this.select.querySelectorAll('option')
 
-    events.listen(this.select, 'change', (event) => onChange(this, event))
+    events.listen(this.select, 'change', event => onChange(this, event))
   }
   getValue () {
     if (this.select.type === 'select-one') return this.select.value
@@ -85,7 +85,7 @@ class Select {
   changeSelectOptions (newOptions, persist, keepFirstOption) {
     let originalValue = this.getValue()
     let firstOption = keepFirstOption ? this.getSelectOptions()[0] : null
-    let options = firstOption ? [firstOption, ...newOptions] : newOptions
+    let options = firstOption ?  [firstOption].concat(newOptions) : newOptions
 
     this.suppressEvents = true
     this.select.length = 0

@@ -30,8 +30,8 @@ var Input = function () {
     }
   }, {
     key: 'setValue',
-    value: function setValue() {
-      return this.field.setValue();
+    value: function setValue(value, suppress) {
+      return this.field.setValue(value, suppress);
     }
   }]);
   return Input;

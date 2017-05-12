@@ -7,8 +7,8 @@ class Input {
   getValue () {
     return this.field.getValue()
   }
-  setValue () {
-    return this.field.setValue()
+  setValue (value, suppress) {
+    return this.field.setValue(value, suppress)
   }
 }
 

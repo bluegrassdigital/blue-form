@@ -23,9 +23,9 @@ class RadioInput {
   setValue (value, suppress) {
     dom.each(this.inputs, (input) => {
       if (input.value === value) {
-        input.checked = 'checked'
+        input.checked = true;
       } else {
-        input.removeAttribute('checked')
+        input.checked = false;
       }
     })
     if (!suppress) events.trigger(this.inputs[0], 'change')

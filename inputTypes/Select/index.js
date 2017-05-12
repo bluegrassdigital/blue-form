@@ -1,9 +1,5 @@
 // This is an entirely generated file, please do not modify it directly. Modify the source .es6.js file and run the gulp task'use strict';
 
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
-
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -100,7 +96,7 @@ var Select = function () {
 
       var originalValue = this.getValue();
       var firstOption = keepFirstOption ? this.getSelectOptions()[0] : null;
-      var options = firstOption ? [firstOption].concat((0, _toConsumableArray3.default)(newOptions)) : newOptions;
+      var options = firstOption ? [firstOption].concat(newOptions) : newOptions;
 
       this.suppressEvents = true;
       this.select.length = 0;

@@ -39,9 +39,9 @@ var RadioInput = function () {
     value: function setValue(value, suppress) {
       _blueJs.dom.each(this.inputs, function (input) {
         if (input.value === value) {
-          input.checked = 'checked';
+          input.checked = true;
         } else {
-          input.removeAttribute('checked');
+          input.checked = false;
         }
       });
       if (!suppress) _blueJs.events.trigger(this.inputs[0], 'change');

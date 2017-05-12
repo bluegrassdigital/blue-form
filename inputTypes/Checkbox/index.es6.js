@@ -24,10 +24,10 @@ class CheckboxInput {
   setValue (value, suppress) {
     value = Array.isArray(value) ? value : [value]
     dom.each(this.inputs, input => {
-      if (value.indexOf(input.value) !== -1) {
-        input.checked = 'checked'
+      if (input.value === value) {
+        input.checked = true;
       } else {
-        input.removeAttribute('checked')
+        input.checked = false;
       }
     })
     if (!suppress) events.trigger(this.inputs[0], 'change')
