@@ -11,26 +11,29 @@ class Select {
   constructor (els, name, onChange) {
     this.name = name
     this.select = els[0]
-    this.options = this.select.querySelectorAll('option')
 
     events.listen(this.select, 'change', event => onChange(this, event))
   }
   getValue () {
     if (this.select.type === 'select-one') return this.select.value
 
-    const selectedOptions = dom.filter(this.options, opt => opt.selected)
+    var options = this.select.querySelectorAll('option')
+
+    const selectedOptions = dom.filter(options, opt => opt.selected)
 
     return selectedOptions.map(opt => opt.value)
   }
   getSelectedOptionText () {
-    return this.options[this.getSelectedIndex()].textContent
+    var options = this.select.querySelectorAll('option')
+    return options[this.getSelectedIndex()].textContent
   }
   setValue (value, suppress) {
     if (this.select.type === 'select-one') {
       this.select.value = value
     } else {
+      var options = this.select.querySelectorAll('option')
       value = Array.isArray(value) ? value : [value]
-      dom.each(this.options, option => {
+      dom.each(options, option => {
         if (value.indexOf(option.value) !== -1) {
           option.selected = 'selected'
         } else {
@@ -60,9 +63,10 @@ class Select {
    * @returns {array} An array representing the current Select options
    */
   getSelectOptions () {
+    var options = this.select.querySelectorAll('option')
     let opts = []
 
-    dom.each(this.options, (option) => {
+    dom.each(options, (option) => {
       let opt = {
         Text: option.textContent,
         Value: option.value || option.textContent

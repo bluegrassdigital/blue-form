@@ -1,6 +1,6 @@
 {
   "name": "blue-form",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A class based form implementation for easily getting/setting form field values programmatically",
   "main": "index.js",
   "scripts": {

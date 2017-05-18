@@ -20,7 +20,6 @@ var Select = function () {
 
     this.name = name;
     this.select = els[0];
-    this.options = this.select.querySelectorAll('option');
 
     _blueJs.events.listen(this.select, 'change', function (event) {
       return onChange(_this, event);
@@ -32,7 +31,9 @@ var Select = function () {
     value: function getValue() {
       if (this.select.type === 'select-one') return this.select.value;
 
-      var selectedOptions = _blueJs.dom.filter(this.options, function (opt) {
+      var options = this.select.querySelectorAll('option');
+
+      var selectedOptions = _blueJs.dom.filter(options, function (opt) {
         return opt.selected;
       });
 
@@ -43,7 +44,8 @@ var Select = function () {
   }, {
     key: 'getSelectedOptionText',
     value: function getSelectedOptionText() {
-      return this.options[this.getSelectedIndex()].textContent;
+      var options = this.select.querySelectorAll('option');
+      return options[this.getSelectedIndex()].textContent;
     }
   }, {
     key: 'setValue',
@@ -51,8 +53,9 @@ var Select = function () {
       if (this.select.type === 'select-one') {
         this.select.value = value;
       } else {
+        var options = this.select.querySelectorAll('option');
         value = Array.isArray(value) ? value : [value];
-        _blueJs.dom.each(this.options, function (option) {
+        _blueJs.dom.each(options, function (option) {
           if (value.indexOf(option.value) !== -1) {
             option.selected = 'selected';
           } else {
@@ -76,9 +79,10 @@ var Select = function () {
   }, {
     key: 'getSelectOptions',
     value: function getSelectOptions() {
+      var options = this.select.querySelectorAll('option');
       var opts = [];
 
-      _blueJs.dom.each(this.options, function (option) {
+      _blueJs.dom.each(options, function (option) {
         var opt = {
           Text: option.textContent,
           Value: option.value || option.textContent
