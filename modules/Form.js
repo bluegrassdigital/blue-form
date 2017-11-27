@@ -1,18 +1,18 @@
-import { createField } from '../utils'
+import { createField } from './utils'
 
 class Form {
   constructor (el, opts) {
     this.el = el
-    this.fieldEls = Array.from(el)
+    this.fieldEls = el.querySelectorAll('input[name], select[name], textarea[name]')
     this.fields = {}
 
-    this.options = opts
+    this.options = opts || {}
 
     this.onFieldUpdated = this.onFieldUpdated.bind(this)
 
-    this._createFields()
+    this.createFields()
   }
-  _createFields () {
+  createFields () {
     this.fieldEls.forEach(el => {
       if (!this.fields[el.name]) {
         const field = createField(el.name, this.onFieldUpdated)

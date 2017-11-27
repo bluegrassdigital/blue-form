@@ -4,7 +4,6 @@
 
 # node.js
 #
-*.es6.js
+modules/
 node_modules/
 npm-debug.log
-docs/

@@ -1,4 +1,5 @@
-import { events, dom } from 'blue-js'
+import { listen, trigger } from 'blue-js/events'
+import { each, filter } from 'blue-js/dom'
 
 /**
  * Select widget
@@ -12,14 +13,14 @@ class Select {
     this.name = name
     this.select = els[0]
 
-    events.listen(this.select, 'change', event => onChange(this, event))
+    listen(this.select, 'change', event => onChange(this, event))
   }
   getValue () {
     if (this.select.type === 'select-one') return this.select.value
 
     var options = this.select.querySelectorAll('option')
 
-    const selectedOptions = dom.filter(options, opt => opt.selected)
+    const selectedOptions = filter(options, opt => opt.selected)
 
     return selectedOptions.map(opt => opt.value)
   }
@@ -33,7 +34,7 @@ class Select {
     } else {
       var options = this.select.querySelectorAll('option')
       value = Array.isArray(value) ? value : [value]
-      dom.each(options, option => {
+      each(options, option => {
         if (value.indexOf(option.value) !== -1) {
           option.selected = 'selected'
         } else {
@@ -41,7 +42,7 @@ class Select {
         }
       })
     }
-    if (!suppress) events.trigger(this.select, 'change')
+    if (!suppress) trigger(this.select, 'change')
   }
   /**
    * Get index of selected option
@@ -56,7 +57,7 @@ class Select {
    */
   setSelectIndex (newIndex) {
     this.select.selectedIndex = newIndex
-    events.trigger(this.select, 'change')
+    trigger(this.select, 'change')
   }
   /**
    * Get current options of the select
@@ -102,8 +103,8 @@ class Select {
 
     this.suppressEvents = false
 
-    events.trigger(this.select, 'change')
+    trigger(this.select, 'change')
   }
 }
 
-module.exports = Select
+export default Select

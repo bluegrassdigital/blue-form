@@ -1,18 +1,23 @@
-// This is an entirely generated file, please do not modify it directly. Modify the source .es6.js file and run the gulp task'use strict';
+'use strict';
 
-var _Form = require('./Form');
-
-var _Form2 = _interopRequireDefault(_Form);
+exports.__esModule = true;
 
 var _Input = require('./Input');
 
-var _Input2 = _interopRequireDefault(_Input);
+Object.defineProperty(exports, 'Input', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Input).default;
+  }
+});
+
+var _Form = require('./Form');
+
+Object.defineProperty(exports, 'Form', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Form).default;
+  }
+});
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var blueForm = {
-  Form: _Form2.default,
-  Input: _Input2.default
-};
-
-module.exports = blueForm;
