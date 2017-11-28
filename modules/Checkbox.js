@@ -1,5 +1,4 @@
-import { listenCollection, trigger } from 'blue-js/events'
-import { dom } from 'blue-js'
+import { dom, events } from 'blue-js'
 
 /**
  * CheckboxInput widget
@@ -12,7 +11,7 @@ class Checkbox {
   constructor (els, name, onChange) {
     this.name = name
     this.inputs = els
-    listenCollection(this.inputs, 'change', (event) => onChange(this, event))
+    events.listenCollection(this.inputs, 'change', (event) => onChange(this, event))
   }
   getValue () {
     if (this.inputs.length === 1) return this.inputs[0].value || 'on'
@@ -31,7 +30,7 @@ class Checkbox {
         input.checked = false
       }
     })
-    if (!suppress) trigger(this.inputs[0], 'change')
+    if (!suppress) events.trigger(this.inputs[0], 'change')
   }
 }
 
