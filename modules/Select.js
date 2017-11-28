@@ -1,5 +1,4 @@
-import { listen, trigger } from 'blue-js/events'
-import { each, filter } from 'blue-js/dom'
+import { dom, events } from 'blue-js'
 
 /**
  * Select widget
@@ -13,14 +12,14 @@ class Select {
     this.name = name
     this.select = els[0]
 
-    listen(this.select, 'change', event => onChange(this, event))
+    events.listen(this.select, 'change', event => onChange(this, event))
   }
   getValue () {
     if (this.select.type === 'select-one') return this.select.value
 
     var options = this.select.querySelectorAll('option')
 
-    const selectedOptions = filter(options, opt => opt.selected)
+    const selectedOptions = dom.filter(options, opt => opt.selected)
 
     return selectedOptions.map(opt => opt.value)
   }
@@ -34,7 +33,7 @@ class Select {
     } else {
       var options = this.select.querySelectorAll('option')
       value = Array.isArray(value) ? value : [value]
-      each(options, option => {
+      dom.each(options, option => {
         if (value.indexOf(option.value) !== -1) {
           option.selected = 'selected'
         } else {
@@ -42,7 +41,7 @@ class Select {
         }
       })
     }
-    if (!suppress) trigger(this.select, 'change')
+    if (!suppress) events.trigger(this.select, 'change')
   }
   /**
    * Get index of selected option
@@ -57,7 +56,7 @@ class Select {
    */
   setSelectIndex (newIndex) {
     this.select.selectedIndex = newIndex
-    trigger(this.select, 'change')
+    events.trigger(this.select, 'change')
   }
   /**
    * Get current options of the select
@@ -90,7 +89,7 @@ class Select {
   changeSelectOptions (newOptions, persist, keepFirstOption) {
     let originalValue = this.getValue()
     let firstOption = keepFirstOption ? this.getSelectOptions()[0] : null
-    let options = firstOption ?  [firstOption].concat(newOptions) : newOptions
+    let options = firstOption ? [firstOption].concat(newOptions) : newOptions
 
     this.suppressEvents = true
     this.select.length = 0
@@ -103,7 +102,7 @@ class Select {
 
     this.suppressEvents = false
 
-    trigger(this.select, 'change')
+    events.trigger(this.select, 'change')
   }
 }
 

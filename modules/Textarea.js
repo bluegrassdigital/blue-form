@@ -1,4 +1,4 @@
-import { listen, trigger } from 'blue-js/events'
+import { events } from 'blue-js'
 
 /**
  * Textarea widget
@@ -11,14 +11,14 @@ class Textarea {
   constructor (els, name, onChange) {
     this.name = name
     this.textarea = els[0]
-    listen(this.textarea, 'input change', (event) => onChange(this, event))
+    events.listen(this.textarea, 'input change', (event) => onChange(this, event))
   }
   getValue () {
     return this.textarea.value
   }
   setValue (value, suppress) {
     this.textarea.value = value
-    if (!suppress) trigger(this.textarea, 'change')
+    if (!suppress) events.trigger(this.textarea, 'change')
   }
 }
 

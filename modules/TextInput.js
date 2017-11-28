@@ -1,4 +1,4 @@
-import { listen, trigger } from 'blue-js/events'
+import { events } from 'blue-js'
 
 /**
  * TextInput widget
@@ -11,14 +11,14 @@ class TextInput {
   constructor (els, name, onChange) {
     this.name = name
     this.input = els[0]
-    listen(this.input, 'input change', (event) => onChange(this, event))
+    events.listen(this.input, 'input change', (event) => onChange(this, event))
   }
   getValue () {
     return this.input.value
   }
   setValue (value, suppress) {
     this.input.value = value
-    if (!suppress) trigger(this.input, 'change')
+    if (!suppress) events.trigger(this.input, 'change')
   }
 }
 

@@ -1,5 +1,5 @@
 import { listenCollection, trigger } from 'blue-js/events'
-import { each } from 'blue-js/dom'
+import { dom } from 'blue-js'
 
 /**
  * CheckboxInput widget
@@ -17,18 +17,18 @@ class Checkbox {
   getValue () {
     if (this.inputs.length === 1) return this.inputs[0].value || 'on'
     let val = []
-    each(this.inputs, (input) => {
+    dom.each(this.inputs, (input) => {
       if (input.checked) val.push(input.value || 'on')
     })
     return val.length === 0 ? null : val
   }
   setValue (value, suppress) {
     value = Array.isArray(value) ? value : [value]
-    each(this.inputs, input => {
+    dom.each(this.inputs, input => {
       if (value.indexOf(input.value) !== -1) {
-        input.checked = true;
+        input.checked = true
       } else {
-        input.checked = false;
+        input.checked = false
       }
     })
     if (!suppress) trigger(this.inputs[0], 'change')
