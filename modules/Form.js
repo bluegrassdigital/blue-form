@@ -13,12 +13,13 @@ class Form {
     this.createFields()
   }
   createFields () {
-    this.fieldEls.forEach(el => {
+    for (let i = 0; i < this.fieldEls.length; i++) {
+      const el = this.fieldEls[i]
       if (!this.fields[el.name]) {
         const field = createField(el.name, this.onFieldUpdated)
         if (field) this.fields[el.name] = field
       }
-    })
+    }
   }
   /**
    * Programmatically reset the form to its original state
