@@ -3,7 +3,6 @@ import { createField } from './utils'
 class Form {
   constructor (el, opts) {
     this.el = el
-    this.fieldEls = el.querySelectorAll('input[name], select[name], textarea[name]')
     this.fields = {}
 
     this.options = opts || {}
@@ -13,6 +12,7 @@ class Form {
     this.createFields()
   }
   createFields () {
+    this.fieldEls = this.el.querySelectorAll('input[name], select[name], textarea[name]')
     for (let i = 0; i < this.fieldEls.length; i++) {
       const el = this.fieldEls[i]
       if (!this.fields[el.name]) {
@@ -35,6 +35,7 @@ class Form {
    * @param {Object} newValues - An object of key value pairs corresponding to field names and values to update.
    */
   setFieldValues (newValues, suppress = false) {
+    this.createFields()
     for (let field in this.fields) {
       if (newValues[field] && this.fields.hasOwnProperty(field)) {
         this.fields[field].setValue(newValues[field], suppress)
@@ -46,6 +47,7 @@ class Form {
    * @returns {Object} An object of key value pairs of form field values
    */
   getFieldValues () {
+    this.createFields()
     let fieldValues = {}
     for (let field in this.fields) {
       if (field && this.fields.hasOwnProperty(field)) {
