@@ -12,7 +12,9 @@ This is a UMD module, so can be consumed any way you like
 
 Install via npm `npm install blue-form --save`
 
-Or include `blue-form.js` from the `./dist` folder in your page
+Or include `blue-form.umd.js` from the `./dist` folder in your page
+
+If you were previously using the UMD module, you'll also need to include the UMD version of blue-js before referencing blue-form
 
 ### CommonJS
 ```javascript
@@ -92,18 +94,3 @@ var form = new blueForm.Form(el)
 console.log(form.getFieldValues())
 </script>
 ```
-
-## Contributing to blue-form
-
-[Standard JS](http://standardjs.com/) applies
-
-camelCase for function and variable names
-
-Standard [Github Flow](https://guides.github.com/introduction/flow/) - branch, submit pull requests
-
-### Getting set up
-
-- Pull the repo
-- run `npm install` or `yarn install`
-- run `gulp` to transform/babelify the *.es6.js files
-- run `npm run build` to compile the dist version
