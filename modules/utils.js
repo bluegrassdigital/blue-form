@@ -17,6 +17,7 @@ export function getTypeClass (fieldType) {
     case 'search':
     case 'tel':
     case 'url':
+    case 'number':
     case 'color':
     case 'range':
     case 'hidden':

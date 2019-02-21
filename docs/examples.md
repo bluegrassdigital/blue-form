@@ -15,7 +15,7 @@ form.setFieldValues({
 })
 ```
 
-<?codeembed seamless title="Result" size="ipad" base="docs/base.html" adjust-height use-html="form" scripts="../umd/blue-form.js,form.js"></codeembed?>
+<?codeembed seamless title="Result" size="ipad" base="docs/base.html" adjust-height use-html="form" scripts="https://unpkg.com/blue-js@3.0.2/dist/blue.umd.js,../dist/blue-form.umd.js,form.js"></codeembed?>
 
 <?tabs>
 <codeblock title="JS" lang="javascript" external="docs/form.js"></codeblock>
